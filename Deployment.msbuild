@@ -259,7 +259,7 @@
   <Target Name="AfterBuild">
   </Target> -->
 
-<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+
     <Target Name="AfterBuild">
         <PropertyGroup>      
             <ReleasePath>bin\Release\</ReleasePath>
