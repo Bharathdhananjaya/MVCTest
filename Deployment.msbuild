@@ -259,6 +259,11 @@
   <Target Name="AfterBuild">
   </Target> -->
 
+    <Target Name="AfterBuild">
+    <CallTarget Targets="BuildPackage" Condition="'$(Configuration)'=='Release'" />
+</Target>
+
+
 <Target Name="BuildPackage">
     <!-- Package for installing the MyApp Service -->
     <Zip Files="@(MyAppBinaries);@(MyAppOtherFiles)" Flatten="True" WorkingDirectory="$(MSBuildProjectDirectory)" ZipFileName="$(PackageOutputFolder)\$(PackageName)_$(Major).$(Minor).$(Revision)_Install.zip" />
