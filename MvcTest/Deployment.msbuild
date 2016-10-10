@@ -258,4 +258,11 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+
+<Target Name="BuildPackage">
+    <!-- Package for installing the MyApp Service -->
+    <Zip Files="@(MyAppBinaries);@(MyAppOtherFiles)" Flatten="True" WorkingDirectory="$(MSBuildProjectDirectory)" ZipFileName="$(PackageOutputFolder)\$(PackageName)_$(Major).$(Minor).$(Revision)_Install.zip" />
+    <!-- Package for MyApp Contracts -->
+    <Zip Files="@(MyAppContracts)" Flatten="True" WorkingDirectory="$(MSBuildProjectDirectory)" ZipFileName="$(PackageOutputFolder)\$(PackageName)_MyAppContracts_$(Major).$(Minor).$(Revision)_Install.zip" />
+</Target>
 </Project>
