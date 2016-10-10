@@ -264,7 +264,6 @@
 </Target>
 
 
-  <Import Project="lib\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
   <Target Name="Zip">
     <CreateItem Include="MVCTest\*.*" >
       <Output ItemName="ZipFiles" TaskParameter="Include"/>
