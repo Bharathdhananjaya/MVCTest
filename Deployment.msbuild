@@ -259,15 +259,18 @@
   <Target Name="AfterBuild">
   </Target> -->
 
+<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
     <Target Name="AfterBuild">
-    <CallTarget Targets="BuildPackage" Condition="'$(Configuration)'=='Release'" />
-</Target>
-
-
-  <Target Name="Zip">
-    <CreateItem Include="MVCTest\*.*" >
-      <Output ItemName="ZipFiles" TaskParameter="Include"/>
-    </CreateItem>
-    <Zip ZipFileName="BharathTest.zip" WorkingDirectory="MvcTest" Files="@(ZipFiles)" />
-  </Target>
+        <PropertyGroup>      
+            <ReleasePath>bin\Release\</ReleasePath>
+        </PropertyGroup>
+    <ItemGroup>      
+        <ReleaseApplicationFiles
+            Include="$(ReleasePath)\**\*.*"/>
+    </ItemGroup>
+    <Zip Files="@(ReleaseApplicationFiles)" 
+      WorkingDirectory="$(ReleasePath)"
+      ZipFileName="c:\1.zip"
+      ZipLevel="9" />
+    </Target>
 </Project>
