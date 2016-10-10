@@ -258,19 +258,13 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+ 
 
-
-    <Target Name="AfterBuild">
-        <PropertyGroup>      
-            <ReleasePath>bin</ReleasePath>
-        </PropertyGroup>
-    <ItemGroup>      
-        <ReleaseApplicationFiles
-            Include="$(ReleasePath)\**\*.*"/>
-    </ItemGroup>
-    <Zip Files="@(ReleaseApplicationFiles)" 
-      WorkingDirectory="$(ReleasePath)"
-      ZipFileName="c:\1.zip"
-      ZipLevel="9" />
-    </Target>
+<Target Name="AfterBuild" Condition="$(Configuration) == 'Release'">
+  <Copy SourceFiles="$(SolutionDir)\License.txt" DestinationFiles="$(OutputPath)Project.License.txt" />
+  <ItemGroup>
+    <ZipFiles Include="$(OutputPath)*.dll" /> 
+  </ItemGroup>
+  <Zip OutputFilename="$(OutputPath)Project.zip" Files="@(ZipFiles)" />
+</Target>
 </Project>
