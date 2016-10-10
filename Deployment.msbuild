@@ -262,7 +262,7 @@
 
     <Target Name="AfterBuild">
         <PropertyGroup>      
-            <ReleasePath>bin\Release\</ReleasePath>
+            <ReleasePath>bin</ReleasePath>
         </PropertyGroup>
     <ItemGroup>      
         <ReleaseApplicationFiles
